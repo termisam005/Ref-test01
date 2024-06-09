@@ -1,25 +1,53 @@
 import logo from './logo.svg';
 import './App.css';
+import { useRef, useState } from 'react';
+import ScrollToTop from './components/ScrollToTop';
+
 
 function App() {
+
+  const inputEl = useRef(null);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type='text' ref={inputEl} />
+      <button onClick={()=>inputEl.current.focus()}>검색</button>
+      <ScrollToTop />
     </div>
   );
 }
+
+
+// function App(){
+
+//   const [stateCount, setStateCount] = useState(0);
+//   const clickCount =()=> setStateCount((prev)=>prev + 1);
+//   const refCount = useRef(0);
+//   let count = 0;
+
+//   return(
+//     <div>
+//       <div>state:{stateCount}</div>
+//       <div>변수:{count}</div>
+//       <div>ref:{refCount.current}</div>
+
+//       <button onClick={clickCount}>
+//         state up
+//       </button>
+//       <br/>
+//       <button onClick={()=>{
+//         count++;
+//       }}>
+//         변수 up
+//       </button>
+//       <button onClick={()=>{
+//         refCount.current++;
+//         console.log('ref',refCount);
+//       }}>
+//         ref up
+//       </button>
+//     </div>
+//   )
+// }
 
 export default App;
